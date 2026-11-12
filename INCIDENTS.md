@@ -8,7 +8,7 @@ Newest first.
 - **Symptom:** Commit refused with "No .pre-commit-config.yaml file was found". No gitleaks output at all.
 - **Diagnosis:** The config step had been skipped. pre-commit fails closed without a config, so pre-commit itself refused the commit; gitleaks never ran.
 - **Fix:** Created .pre-commit-config.yaml and re-ran the drill. Output showed hook "gitleaks (staged changes)" Failed with RuleID github-pat.
-- **Lesson:** YOUR LESSON
+- **Lesson:** When a safety control fires, read why it fired before moving on. A block for the wrong reason, or a warning nobody reads, gives false confidence.
 - **Time to fix:** 5 min
 
 ## INC-000 — check-ignore exit code lied about the negated rule (2026-11-12)
