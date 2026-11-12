@@ -2,3 +2,12 @@
 
 | Tool | Version | Check with |
 | --- | --- | --- |
+| WSL | 2.7.3.0 | wsl --version (PowerShell) |
+| Ubuntu | Ubuntu 24.04.5 LTS | lsb_release -ds |
+| WSL kernel | 6.6.114.1-microsoft-standard-WSL2 | uname -r |
+| git | 2.43.0 | git --version |
+| gh | 2.103.3 | gh --version |
+| Python (system) | 3.12.3 | python3 --version |
+| pipx | 1.4.3 | pipx --version |
+| pre-commit | 4.7.0 | pre-commit --version |
+| gitleaks | 8.30.1 | gitleaks version |
