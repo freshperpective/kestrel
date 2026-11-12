@@ -1,0 +1,26 @@
+# --- Secrets and local environment ---
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.secret.*
+kubeconfig*
+# --- OpenTofu ---
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+crash.log
+# --- Python ---
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Local only ---
+sandbox/
+*.log
