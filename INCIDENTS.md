@@ -2,6 +2,15 @@
 
 Newest first.
 
+## INC-002 — local main diverged from GitHub after a double reset (2026-11-12)
+
+- **What I broke:** Ran `git reset HEAD~1` twice (the undo step appeared in two consecutive instructions). The first reset removed an unpushed drill commit; the second removed 57429e2, which was already on GitHub.
+- **Symptom:** `git push` rejected as non-fast-forward; `git status` said local main and origin/main had diverged; docs/versions.md suddenly showed as modified. A follow-up `git pull` (rebase) stopped with a conflict in NEXT.md.
+- **Diagnosis:** The second reset moved local main behind origin/main and turned 57429e2's changes into unstaged edits. New local commits then created two histories from the same parent; the rebase conflicted because both sides had edited NEXT.md.
+- **Fix:** `git rebase --abort`, then `git diff origin/main` to see what a reset would discard (only one NEXT.md line), then `git reset --hard origin/main`, then re-applied that one line as a new commit and pushed.
+- **Lesson:** When a command fails, stop and read the error before running anything else; every extra command added a layer. Diff against the target before any destructive reset. Amend or reset only before a push; after a push, add a new commit.
+- **Time to fix:** 15 min
+
 ## INC-001 — leak drill blocked for the wrong reason (2026-11-12)
 
 - **What I broke:** Staged a fake GitHub token and ran `git commit` to prove the gitleaks hook blocks it.
